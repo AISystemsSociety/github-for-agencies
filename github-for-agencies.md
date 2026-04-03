@@ -267,16 +267,16 @@ cd /tmp && npx staticrypt@3.5.4 to-encrypt.html \
   --template-color-primary "#7c3aed" \
   --template-color-secondary "#09090b"
 
-# 4. Copy the encrypted version back
-cp /tmp/enc-out/to-encrypt.html ./index.html
-
-# 5. Keep your unencrypted source as a backup (DO NOT commit this)
-cp index.html .src.html
+# 4. Save your unencrypted source as a backup BEFORE overwriting (DO NOT commit this)
+cp /tmp/to-encrypt.html .src.html
 echo ".src.html" >> .gitignore
+
+# 5. Copy the encrypted version back as your live file
+cp /tmp/enc-out/to-encrypt.html ./index.html
 ```
 
 ### Rules
-- Password is typically the client's first name, lowercase
+- Choose a memorable password and share it with your client securely (e.g., via DM or a separate message)
 - `--remember 30` means the browser remembers the password for 30 days
 - Always keep `.src.html` as your editable source. Edit that, re-encrypt, commit.
 - NEVER commit the unencrypted `.src.html` to GitHub
